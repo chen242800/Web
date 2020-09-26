@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addStudent</title>
+</head>
+<body>
+    <h1>Add New Student</h1>
+    <form method="POST" action="/addStudent/">
+        <p>Student name: <input type="text" name="stu_name"></p>
+        <p>
+            Class name:
+            <select name="class_id">
+                {% for item in class_list %}
+                    <option value="{{ item.id }}">{{ item.title }}</option> #这样可以直接把id提交到后台
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

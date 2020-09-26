@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Table</title>
+</head>
+<body>
+    <h1>Student Table</h1>
+    <div>
+        <a href="/addStudent/">Add</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>student_id</th>
+                <th>student_name</th>
+                <th>class_name</th>
+                <th>operate</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in student_list %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.stu_name }}</td>
+                    <td>{{ row.title }}</td>
+                    <td><a href="/editStudent/?nid={{ row.id }}">edit</a> </td>
+                    <td><a href="/delStudent/?nid={{ row.id }}">delete</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

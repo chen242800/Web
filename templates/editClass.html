@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editClass</title>
+</head>
+<body>
+    <h1>Edit Class</h1>
+    <form method="POST" action="/editClass/?nid={{ result.id }}">
+        <p>Class Id: <input type="text" value="{{ result.id }}" name="id"></p>
+        <p>Class name: <input type="text" value="{{ result.title }}"name="title"></p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

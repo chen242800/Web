@@ -15,7 +15,37 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from . import views
+
+from django.shortcuts import HttpResponse, render,redirect
+
+def login(request):
+    # return HttpResponse('login') # 这里返回的是'login字符串' 这里也只能写字符串，如果需要加网址，就要render
+    if request.method == "GET":  # 一般的请求网页的method 都是GET类型
+        return render(request, 'login.html')
+    elif request.method == "POST": # 点击发送按钮后的数据都是POST形式
+        u = request.POST.get('user')
+        p = request.POST.get('pwd')
+        if u=='admin' and p=='123123':
+            # 登录成功
+            return redirect('/index/')
+        else:
+            # 登录不成功就刷新这个页面
+            return render(request, 'login.html',{'msg':'username or password incorrect'})
+
+def index(request):
+    return render(request,'index.html')
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+     #url(r'^admin/', admin.site.urls),
+    url(r'^login/',login),
+    url(r'^index/',index),
+    url(r'^classes/',views.classes),
+    url(r'^addClass/',views.addClass),
+    url(r'^delClass/',views.delClass),
+    url(r'^editClass/',views.editClass),
+    url(r'^students/',views.students),
+    url(r'^addStudent/',views.addStudent),
+    url(r'^editStudent/',views.editStudent),
+
 ]

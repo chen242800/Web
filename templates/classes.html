@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CLass Table</title>
+    <style>
+        .shadow{   <!-- 遮罩层 -->
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.5;
+            z-index: 999;
+        }
+        .model{ <!-- 中间弹出的白框 -->
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            height: 300px;
+            width: 400px;
+            background-color: white;
+            margin-left: -200px ;
+            margin-top: -150px;
+        }
+        .hide{
+            display: none;                  <!-- 将当前隐藏 -->
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Table</h1>
+    <div>
+        <a href="/addClass/">Add</a>
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>class name</th>
+                <th>operate</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in class_list %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.title }}</td>
+                    <td><a href="/editClass/?nid={{ row.id }}">edit</a> </td>
+                    <td><a href="/delClass/?nid={{ row.id }}">delete</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>
